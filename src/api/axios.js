@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const Client = axios.create({
-  baseURL: "http://api.bikunku.com",
+  baseURL: "https://api.bikunku.com",
   timeout: 1000,
 });
 
