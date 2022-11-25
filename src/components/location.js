@@ -26,6 +26,7 @@ export default function LocationBar() {
       },
       userDecisionTimeout: 5000,
       onSuccess: updateLocationData,
+      watchPosition: true,
     });
 
   client.onopen = (event) => {
