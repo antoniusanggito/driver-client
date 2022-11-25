@@ -1,43 +1,29 @@
-import { useGeolocated } from "react-geolocated";
+import LoginBar from "./components/loginBar";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Home from "./components/home";
 
 function App() {
-  const { coords, isGeolocationAvailable, isGeolocationEnabled } =
-    useGeolocated({
-      watchPosition: true,
-      userDecisionTimeout: 5000,
-    });
+  const isLoggedIn = localStorage.getItem("token") != null;
 
-  return !isGeolocationAvailable ? (
-    <div>Your browser does not support Geolocation</div>
-  ) : !isGeolocationEnabled ? (
-    <div>Geolocation is not enabled</div>
-  ) : coords ? (
-    <table>
-      <tbody>
-        <tr>
-          <td>latitude</td>
-          <td>{coords.latitude}</td>
-        </tr>
-        <tr>
-          <td>longitude</td>
-          <td>{coords.longitude}</td>
-        </tr>
-        <tr>
-          <td>altitude</td>
-          <td>{coords.altitude}</td>
-        </tr>
-        <tr>
-          <td>heading</td>
-          <td>{coords.heading}</td>
-        </tr>
-        <tr>
-          <td>speed</td>
-          <td>{coords.speed}</td>
-        </tr>
-      </tbody>
-    </table>
-  ) : (
-    <div>Getting the location data&hellip; </div>
+  return (
+    <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <div className="w-screen h-screen flex flex-col justify-center items-center p-4 font-sans">
+        {isLoggedIn ? <Home /> : <LoginBar />}
+      </div>
+    </>
   );
 }
 
