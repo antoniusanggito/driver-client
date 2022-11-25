@@ -3,7 +3,7 @@ import { useGeolocated } from "react-geolocated";
 const token = localStorage.getItem("token") || "";
 
 const client = new WebSocket(
-  `ws://api.bikunku.com/bus/stream?type=driver&token=${token}`
+  `wss://hapi.bikunku.com/bus/stream?type=driver&token=${token}`
 );
 
 export default function LocationBar() {
