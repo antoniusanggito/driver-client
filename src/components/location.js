@@ -9,12 +9,14 @@ const client = new WebSocket(
 export default function LocationBar() {
   const updateLocationData = (pos) => {
     console.log(pos);
-    client.send({
-      long: pos.longitude,
-      lat: pos.latitude,
-      heading: pos.heading == null ? 0 : pos.heading,
-      speed: pos.speed == null ? 0 : pos.speed,
-    });
+    client.send(
+      JSON.stringify({
+        long: pos.longitude,
+        lat: pos.latitude,
+        heading: pos.heading == null ? 0 : pos.heading,
+        speed: pos.speed == null ? 0 : pos.speed,
+      })
+    );
   };
 
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
