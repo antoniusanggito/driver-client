@@ -11,10 +11,10 @@ export default function LocationBar() {
     console.log(pos);
     client.send(
       JSON.stringify({
-        long: pos.longitude,
-        lat: pos.latitude,
-        heading: pos.heading == null ? 0 : pos.heading,
-        speed: pos.speed == null ? 0 : pos.speed,
+        long: pos.coords.longitude,
+        lat: pos.coords.latitude,
+        heading: pos.coords.heading == null ? 0 : pos.coords.heading,
+        speed: pos.coords.speed == null ? 0 : pos.coords.speed,
       })
     );
   };
@@ -22,7 +22,7 @@ export default function LocationBar() {
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
       positionOptions: {
-        enableHighAccuracy: false,
+        enableHighAccuracy: true,
       },
       userDecisionTimeout: 5000,
       onSuccess: updateLocationData,
