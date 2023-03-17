@@ -24,6 +24,7 @@ export default function LocationBar() {
     useGeolocated({
       positionOptions: {
         enableHighAccuracy: true,
+        maximumAge: 0,
       },
       userDecisionTimeout: 5000,
       onSuccess: updateLocationData,
