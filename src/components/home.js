@@ -12,18 +12,19 @@ export default function Home() {
 
   useEffect(() => {
     const localData = localStorage.getItem("driverData");
-    setData(JSON.parse(localData));
+    // setData(JSON.parse(localData));
+    setData({});
   }, []);
 
   return (
     <>
-      <p className="font-bold text-4xl">
+      {/* <p className="font-bold text-4xl">
         {data.number} | {data.plate}
-      </p>
+      </p> */}
 
       <LocationBar />
 
-      <Toggler />
+      {/* <Toggler /> */}
 
       <button className="btn btn-error mt-4 w-96" onClick={deleteCache}>
         Logout

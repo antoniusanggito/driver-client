@@ -2,21 +2,22 @@ import { useGeolocated } from "react-geolocated";
 
 const token = localStorage.getItem("token") || "";
 
-const client = new WebSocket(
-  `wss://api.bikunku.com/bus/stream?type=driver&token=${token}&experimental=false`
-);
+// const client = new WebSocket(
+//   `wss://api.bikunku.com/bus/stream?type=driver&token=${token}&experimental=false`
+// );
 
 export default function LocationBar() {
   const updateLocationData = (pos) => {
     console.log(pos);
-    client.send(
-      JSON.stringify({
-        long: pos.coords.longitude,
-        lat: pos.coords.latitude,
-        heading: pos.coords.heading == null ? 0 : pos.coords.heading,
-        speed: pos.coords.speed == null ? 0 : pos.coords.speed,
-      })
-    );
+    // client.send(
+    //   JSON.stringify({
+    //     long: pos.coords.longitude,
+    //     lat: pos.coords.latitude,
+    //     heading: pos.coords.heading == null ? 0 : pos.coords.heading,
+    //     speed: pos.coords.speed == null ? 0 : pos.coords.speed,
+    //   })
+    // );
+    console.log("ws sent");
   };
 
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
@@ -29,9 +30,9 @@ export default function LocationBar() {
       watchPosition: true,
     });
 
-  client.onopen = (event) => {
-    console.log(event);
-  };
+  // client.onopen = (event) => {
+  //   console.log(event);
+  // };
 
   return (
     <div className="card w-96 h-fit bg-primary shadow-xl mt-4">

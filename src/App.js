@@ -21,7 +21,7 @@ function App() {
         theme="light"
       />
       <div className="w-screen h-screen flex flex-col justify-center items-center p-4 font-sans">
-        {isLoggedIn ? <Home /> : <LoginBar />}
+        <Home />
       </div>
     </>
   );
